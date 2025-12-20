@@ -18,6 +18,37 @@ There are four public functions available for your timer.
 - bool timeElapsed(unsigned long targetTime); This function returns true if the specified time has elapsed since the timer was construceed or call to resetTimer(). If true, the timer is reset.
 - void resetTimer(); This function resets the timer (to zero).  
 
+## Sample code (blinks the on-board led once per second)
+
+```` Arduino
+    // Include for mdb_timer
+    #include <mdb_timer.h>
+
+    int led                 = 13;
+    int ledState            = LOW;
+    unsigned long blinkTime = 500;
+
+    // Create the timer instance
+    mdb_timer mdbTimer; // Call the default mdb_timer constructor with no parameters and therefore no ()
+
+    void setup() {
+      pinMode(led,    OUTPUT);
+      digitalWrite(led, ledState);
+    }
+
+    void loop() {
+      if (ledState == LOW) {
+        if (mdbTimer.timeElapsed(blinkTime)) {
+          ledState = HIGH;
+        }
+      } else {
+        if (mdbTimer.timeElapsed(blinkTime)) {
+          ledState = LOW;
+        }
+      }
+      digitalWrite(led, ledState);
+    }
+
 ## Remote repository
 
 The remote repository for this project is hosted on GitHub at the following address: https://github.com/AragrnMDB/mdb_timer  
