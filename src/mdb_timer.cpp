@@ -21,13 +21,13 @@ unsigned long mdb_timer::readTimer() {                          // Public functi
 	return (_currentTime - _startTime);                         // Return the elapsed time between the current time and the start time
 }
 
-unsigned long mdb_timer::elapsedTime() {                        // Public function to read the elapsed time from the last read, timeElapsed or reset
+unsigned long mdb_timer::elapsedTime() {                        // Public function to read the elapsed time from the last read, elapsedTime, timeElapsed or reset
 	_currentTime = currentTime();                               // Set the current time
  	_lastTime = _currentTime;                                   // Update last time to current time
 	return (_currentTime - _lastTime);                          // Return the elapsed time between current time and last time
 }
 
-boolean mdb_timer::timeElapsed (unsigned long targetTime) {     // Public function to check if a certain amount of time has elapsed. If it has, the timer is reset
+bool mdb_timer::timeElapsed (unsigned long targetTime) {        // Public function to check if a certain amount of time has elapsed. If it has, the timer is reset
 	_targetTime = targetTime;                                   // Save the target time
 	_currentTime = currentTime();                               // Set the current time
  	_lastTime = _currentTime;                                   // Update last time to current time
