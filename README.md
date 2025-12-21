@@ -20,7 +20,7 @@ There are four public functions available for your timer.
 
 ## Sample code (blinks the on-board led once per second)
 
-```` Arduino
+```` c++
     // Include for mdb_timer
     #include <mdb_timer.h>
 
