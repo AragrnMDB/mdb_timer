@@ -6,13 +6,14 @@ To use the functions in the library include the file mdb_timer.h.
 
 ## Constructors
 
-There are two constructors that you can use to instantiate your timer.
-- mdb_timer(int resolution); Use this to specify the resolution of the timer (LOW/MILLISECONDS or HIGH/MICROSECONDS).  
-- mdb_timer(); Use this to default to LOW/MILLISECONDS resolution.  
+There is one constructor that you can use to instantiate your timer.
+-       mdb_timer::mdb_timer(int resolution=MILLISECONDS)
+      : -resolution(resolution) {}                          // Constructor ((HIGH or MICROSECONDS) or (LOW = MILLISECONDS))
 
 ## Functions
 
-There are four public functions available for your timer.
+There are five public functions available for your timer.
+- void begin();
 - unsigned long readTimer(); This function returns the time elapsed since the timer was constructed or call to resetTimer() in the resolution of the timer.  
 - unsigned long elapsedTime(); This function returns the time elapsed since the timer was constructed or call to readTimer(), elapsedTime(), timeElapsed(), or resetTimer().  
 - bool timeElapsed(unsigned long targetTime); This function returns true if the specified time has elapsed since the timer was construceed or call to resetTimer(). If true, the timer is reset.
@@ -32,6 +33,7 @@ There are four public functions available for your timer.
     mdb_timer mdbTimer; // Call the default mdb_timer constructor with no parameters and therefore no ()
 
     void setup() {
+      mdbTimer.begin();
       pinMode(led,    OUTPUT);
       digitalWrite(led, ledState);
     }

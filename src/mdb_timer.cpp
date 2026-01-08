@@ -1,19 +1,24 @@
 #include "Arduino.h"
 #include "mdb_timer.h"
 
-mdb_timer::mdb_timer() {                                        // Constructor (defaults to LOW = milliseconds resolution)
-	_resolution = LOW;                                          // Store the resolution
-	_startTime = millis();                                      // Set the start time as now (milliseconds)
-	_lastTime = _startTime;                                     // Save the start time as the last time
-}
+//mdb_timer::mdb_timer() {                                        // Constructor (defaults to LOW = milliseconds resolution)
+//	_resolution = LOW;                                          // Store the resolution
+//	_startTime = millis();                                      // Set the start time as now (milliseconds)
+//	_lastTime = _startTime;                                     // Save the start time as the last time
+//}
 
-mdb_timer::mdb_timer(int resolution) {                          // Constructor (HIGH = microseconds, LOW = milliseconds)
-	_resolution = resolution;                                   // Store the resolution
+//mdb_timer::mdb_timer(int resolution) {                          // Constructor (HIGH = microseconds, LOW = milliseconds)
+//	_resolution = resolution;                                   // Store the resolution
+//	_startTime = currentTime();                                 // Get and Set the start time
+//	_lastTime = _startTime;                                     // Save the start time as the last time
+//}
+
+//mdb_timer::mdb_timer() : mdb_timer(MILLISECONDS) {}
+void mdb_timer::begin() {
 	_startTime = currentTime();                                 // Get and Set the start time
 	_lastTime = _startTime;                                     // Save the start time as the last time
 }
 
-//mdb_timer::mdb_timer() : mdb_timer(MILLISECONDS) {}
 
 unsigned long mdb_timer::readTimer() {                          // Public function to read the elapsed time since constructor or reset
 	_currentTime = currentTime();                               // Set the current time

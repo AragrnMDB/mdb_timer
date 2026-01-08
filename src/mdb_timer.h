@@ -11,8 +11,11 @@
 
 class mdb_timer {
    public:
-      mdb_timer();                                              // Constructor - Defaults resolution to LOW (millisecond) resolution.                      Sets _startTime, _lastTime
-      mdb_timer(int resolution);                                // Constructor - Sets resolution to LOW (MILLISECONDS) or HIGH (MICROSECONDS).             Sets _startTime, _lastTime
+      mdb_timer(int resolution=MILLISECONDS)
+      : _resolution(resolution) {}                          // Constructor (HIGH = microseconds, LOW = milliseconds)
+      //mdb_timer();                                              // Constructor - Defaults resolution to LOW (millisecond) resolution.                      Sets _startTime, _lastTime
+      //mdb_timer(int resolution);                                // Constructor - Sets resolution to LOW (MILLISECONDS) or HIGH (MICROSECONDS).             Sets _startTime, _lastTime
+      void          begin();
       unsigned long readTimer();                                // Time since call to constructor, ------------------------------  or mdb_resetTimer.      Sets             _lastTime
       unsigned long elapsedTime();                              // Time since call to constructor, mdb_elapsedTime, mdb_readTimer, or mdb_resetTimer.      Sets             _lastTime
       bool          timeElapsed (unsigned long targetTime);     // True if targetTime has elapsed, false otherwise. _startTime set if targetTime achieved. Sets _startTime, _lastTime
